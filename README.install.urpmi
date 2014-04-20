@@ -1,0 +1,44 @@
+Preparing to start Tvheadend
+-------------------------------
+Before you start Tvheadend for the first time it is necessary to start the service
+once as root. You can do this via the following command:
+
+# service tvheadend start
+
+Alternatively the service will be automatically started after a reboot.
+
+You can start Tvheadend by using the application launcher, which you can find
+in the menu below "Sound & Video -> Tvheadend". This will automatically start
+the web frontend in your default browser.
+Alternatively you can manually point your browser to: http://localhost:9981/
+
+The credentials you have to use for the first login can be found in a
+configuration file in the home directory of Tvheadend. They can only be read
+as root.
+
+# cat /var/lib/tvheadend/.hts/tvheadend/accesscontrol/1
+
+Hint: During the initial package installation a random 12-character password
+was automatically generated. For safety reasons you have to change the
+credentials after the first login. 
+The change can be done very easy by using the web frontend of Tvheadend via
+the menu "Configuration -> Access Control". Please also have a look at:
+
+https://www.lonelycoder.com/hts/tvheadend/docs/2_12/index.html
+chapter 4, Configuration and administration and 
+chapter 4.1, Access configuration.
+
+
+Uninstallation
+--------------
+During uninstallation, the user "tvheadend" and all configuration files in his
+home directory are not removed. If you really don't need that data any more
+you can delete it manually as root via the following commands:
+
+# userdel tvheadend
+# rm -rf /var/lib/tvheadend*
+
+For further information please read the official Tvheadend documentation:
+http://www.lonelycoder.com/hts/tvheadend/docs/2_12/index.html
+
+Have a lot of fun! :-)

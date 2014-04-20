@@ -1,0 +1,15 @@
+┌─[ symbianflo @ symbianflo ] - [ Mandrivausers.ro ] 
+└─[ MRB:aint-no-shit $]: diff -Nurw tvheadend-3.9.orig/Makefile tvheadend-3.9/Makefile
+======================================================================================
+diff -Nurw tvheadend-3.9.orig/Makefile tvheadend-3.9/Makefile
+--- tvheadend-3.9.orig/Makefile	2013-08-07 11:46:15.000000000 +0100
++++ tvheadend-3.9/Makefile	2014-04-20 15:28:29.293396963 +0100
+@@ -27,7 +27,7 @@
+ # Common compiler flags
+ #
+ 
+-CFLAGS  += -Wall -Werror -Wwrite-strings -Wno-deprecated-declarations
++CFLAGS  += -Wall -Wwrite-strings -Wno-deprecated-declarations
+ CFLAGS  += -Wmissing-prototypes -fms-extensions
+ CFLAGS  += -g -funsigned-char -O2 
+ CFLAGS  += -D_FILE_OFFSET_BITS=64
