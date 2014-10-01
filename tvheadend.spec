@@ -3,12 +3,12 @@
 Name:           tvheadend
 Summary:        TV streaming server
 Version:        3.9
-Release:        1
+Release:        3
 License:        GPLv3
 URL:            http://www.lonelycoder.com
 Group:          Video
 Source0:        https://github.com/tvheadend/tvheadend/archive/v3.9.tar.gz
-Source1:        %{name}.init
+Source1:        %{name}.service
 Source2:        %{name}.png
 Source3:        README.install.urpmi
 Source4:        %{name}.conf
@@ -48,12 +48,12 @@ cp -v %{SOURCE3} .
 
 
 %install
-%{makeinstall_std}
+%makeinstall_std
 mkdir -p %{buildroot}/%{_localstatedir}/lib/%{name}/.hts/%{name}/accesscontrol
 cp -v %{SOURCE4} %{buildroot}/%{_localstatedir}/lib/%{name}/.hts/%{name}/accesscontrol/1
 
-mkdir -p %{buildroot}/%{_initddir}
-install -m 0755 %{SOURCE1} %{buildroot}/%{_initddir}/%{name}
+mkdir -p %{buildroot}/%{_unitdir}
+install -m0644 -D %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 
 # Menu entry
 mkdir -p %{buildroot}/%{_datadir}/applications
@@ -86,19 +86,19 @@ if  grep -q '"password": "dummypassword"' %{_localstatedir}/lib/%{name}/.hts/%{n
   sed -i "s,\"password\": \"dummypassword\",\"password\": \"$(pwgen -s 12 1)\"," %{_localstatedir}/lib/%{name}/.hts/%{name}/accesscontrol/1
 fi
 
-%_post_service %{name}
+%systemd_post %{name}
 
 %preun
-%_preun_service %{name}
+%systemd_preun %{name}
 
 
 %files
 
 %doc LICENSE README README.urpmi
-%{_bindir}/%name
-%{_initddir}/%name
-%{_mandir}/man1/%name.1.xz
-%{_iconsdir}/%name.png
+%{_bindir}/%{name}
+%attr(0644,root,root) %{_unitdir}/%{name}.service
+%{_mandir}/man1/%{name}.1.xz
+%{_iconsdir}/%{name}.png
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}
 

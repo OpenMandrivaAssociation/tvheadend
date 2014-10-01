@@ -1,0 +1,14 @@
+[Unit]
+Description=TV streaming server for Linux
+After=syslog.target network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tvheadend
+PIDFile=/var/run/tvheadend.pid
+User=tvheadend
+Group=video
+
+[Install]
+WantedBy=multi-user.target
