@@ -5,7 +5,7 @@ Summary:        TV streaming server
 Version:        3.9
 Release:        3
 License:        GPLv3
-URL:            http://www.lonelycoder.com
+URL:            https://www.lonelycoder.com
 Group:          Video
 Source0:        https://github.com/tvheadend/tvheadend/archive/v3.9.tar.gz
 Source1:        %{name}.service
