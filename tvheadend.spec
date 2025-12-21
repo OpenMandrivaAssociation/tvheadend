@@ -15,6 +15,11 @@ Source4:        %{name}.conf
 
 
 Patch0: 	    %{name}-no_werror.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  fdupes
 BuildRequires:	pkgconfig
 BuildRequires:  pkgconfig(avahi-client)
